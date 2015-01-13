@@ -1,0 +1,28 @@
+{
+  "name": "Meadowlark",
+  "version": "0.1.0",
+  "description": "Meadowlark Application for Express Website Travel Agency",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gerard Ketuma",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.10.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GerardKetuma/meadowlark.git"
+  },
+  "keywords": [
+    "node.js",
+    "express.js",
+    "mongodb"
+  ],
+  "bugs": {
+    "url": "https://github.com/GerardKetuma/meadowlark/issues"
+  },
+  "homepage": "https://github.com/GerardKetuma/meadowlark"
+}
