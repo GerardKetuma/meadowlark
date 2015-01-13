@@ -9,7 +9,8 @@
   "author": "Gerard Ketuma",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.10.7"
+    "express": "^4.10.7",
+    "express-handlebars": "^1.1.0"
   },
   "devDependencies": {},
   "repository": {
