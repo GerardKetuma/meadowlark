@@ -5,6 +5,7 @@ module.exports = function(grunt){
         'grunt-cafe-mocha',
         'grunt-contrib-jshint',
         'grunt-exec',
+        'grunt-link-checker',
     ].forEach(function(task){
         grunt.loadNpmTasks(task);
     });
@@ -18,11 +19,16 @@ module.exports = function(grunt){
             app: ['meadowlark.js', 'public/js/**/*.js', 'lib/**/*.js'],
             qa: ['Gruntfile.js', 'public/qa/**/*.js', 'qa/**/*.js'],
         },
-        exec: {
-            linkchecker: { cmd: 'linkchecker http://seven:3000' }
+        linkChecker: {
+            dev: {
+                site: 'localhost',
+                options: {
+                    initialPort: 3000
+                }
+            }
         },
     });
 
     // register tasks
-    grunt.registerTask('default', ['cafemocha','jshint','exec']);
+    grunt.registerTask('default', ['cafemocha','jshint','linkChecker']);
 };
