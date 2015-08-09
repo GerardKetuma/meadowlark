@@ -1,18 +1,22 @@
 var express = require('express'),
-    exphbs = require('express-handlebars'),
-    fortune = require('./lib/fortune.js');
+  exphbs = require('express-handlebars'),
+  bodyParser = require('body-parser'),
+  formidable = require('formidable'),
+  fortune = require('./lib/fortune.js');
 
 var app = express(),
-    handlebars = exphbs.create({
-        defaultLayout: 'main',
-        helpers: {
-            section: function(name, options) {
-                if(!this._sections) this._sections = {};
-                this._sections[name] = options.fn(this);
-                return null;
-            }
-        }
-    });
+  jsonParser = bodyParser.json(),
+  urlencodedParser = bodyParser.urlencoded({extended: false}),
+  handlebars = exphbs.create({
+    defaultLayout: 'main',
+    helpers: {
+      section: function(name, options) {
+        if(!this._sections) this._sections = {};
+        this._sections[name] = options.fn(this);
+        return null;
+      }
+    }
+  });
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -98,6 +102,39 @@ app.get('/data/nursery-rhyme', function(req, res){
     adjective: 'bushy',
     noun: 'heck',
   });
+});
+
+app.get('/thank-you', function(req, res){
+  res.render('thank-you');
+});
+app.get('/newsletter', function(req, res){
+  // we will learn about CSRF later...for now, we just
+  // provide a dummy value
+  res.render('newsletter', { csrf: 'CSRF token goes here' });
+});
+app.post('/process', urlencodedParser, function(req, res){
+  if(req.xhr || req.accepts('json,html')==='json'){
+    // if there were an error, we would send { error: 'error description' }
+    res.send({ success: true });
+  } else {
+    // if there were an error, we would redirect to an error page
+    res.redirect(303, '/thank-you');
+  }
+});
+app.get('/contest/vacation-photo', function(req, res){
+    var now = new Date();
+    res.render('contest/vacation-photo', { year: now.getFullYear(), month: now.getMonth() });
+});
+app.post('/contest/vacation-photo/:year/:month', function(req, res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files){
+        if(err) return res.redirect(303, '/error');
+        console.log('received fields:');
+        console.log(fields);
+        console.log('received files:');
+        console.log(files);
+        res.redirect(303, '/thank-you');
+    });
 });
 
 // Custom 404 page

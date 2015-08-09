@@ -9,8 +9,10 @@
   "author": "Gerard Ketuma",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.13.3",
     "express": "^4.10.7",
-    "express-handlebars": "^2.0.1"
+    "express-handlebars": "^2.0.1",
+    "formidable": "^1.0.17"
   },
   "devDependencies": {
     "chai": "^1.10.0",
