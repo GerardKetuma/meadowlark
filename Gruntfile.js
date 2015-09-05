@@ -23,7 +23,8 @@ module.exports = function(grunt){
             dev: {
                 site: 'localhost',
                 options: {
-                    initialPort: 3000
+                    initialPort: 3000,
+                    parseScriptTags: false
                 }
             }
         },
