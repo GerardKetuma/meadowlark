@@ -9,22 +9,22 @@
   "author": "Gerard Ketuma",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "cookie-parser": "^1.3.5",
-    "express": "^4.10.7",
-    "express-handlebars": "^2.0.1",
-    "express-session": "^1.11.3",
-    "formidable": "^1.0.17"
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "express-session": "*",
+    "formidable": "*"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "grunt": "^0.4.5",
-    "grunt-cafe-mocha": "^0.1.13",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-exec": "^0.4.6",
-    "grunt-link-checker": "^0.1.0",
-    "mocha": "^2.1.0",
-    "zombie": "^2.5.1"
+    "chai": "*",
+    "grunt": "*",
+    "grunt-cafe-mocha": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-exec": "*",
+    "grunt-link-checker": "*",
+    "mocha": "*",
+    "zombie": "*"
   },
   "repository": {
     "type": "git",

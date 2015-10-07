@@ -1,6 +1,8 @@
 var Browser = require('zombie'),
     assert = require('chai').assert;
 
+Browser.localhost('seven', 3000);
+
 var browser;
 
 suite('Cross-Page Tests', function(){
@@ -14,7 +16,8 @@ suite('Cross-Page Tests', function(){
         var referrer = 'http://seven:3000/tours/hood-river';
         browser.visit(referrer, function(){
             browser.clickLink('.requestGroupRate', function(){
-                assert(browser.field('referrer').value === referrer);
+                //assert(browser.field('referrer').value === referrer);
+                assert(browser.resources[0].request.headers._headers[0][1] === referrer);
                 done();
             });
         });
@@ -25,7 +28,7 @@ suite('Cross-Page Tests', function(){
         var referrer = 'http://seven:3000/tours/oregon-coast';
         browser.visit(referrer, function(){
             browser.clickLink('.requestGroupRate', function(){
-                assert(browser.field('referrer').value === referrer);
+                assert(browser.resources[0].request.headers._headers[0][1] === referrer);
                 done();
             });
         });
