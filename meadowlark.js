@@ -3,6 +3,7 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   formidable = require('formidable'),
   credentials = require('./credentials.js'),
+  cartValidation = require('./lib/cartValidation.js'),
   fortune = require('./lib/fortune.js');
 
 var app = express(),
@@ -43,6 +44,9 @@ app.use(function(req, res, next) {
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
     next();
 });
+
+app.use(cartValidation.checkWaivers);
+app.use(cartValidation.checkGuestCounts);
 
 // mocked weather data
 function getWeatherData(){
